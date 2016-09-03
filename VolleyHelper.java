@@ -16,7 +16,6 @@ import com.android.volley.toolbox.Volley;
 import com.finoit.weather.Activities.MainActivity;
 import com.finoit.weather.Listeners.OnJSONReturn;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -51,7 +50,7 @@ public class VolleyHelper {
 
     }
 
-    public static void makeJSONObjectRequest(final Context context, int requestMethod, String url) throws JSONException {
+    public static void makeJSONObjectRequest(final Context context, int requestMethod, String url){
 
         //requestMethod = requestMethod.toUpperCase();
         final Bundle results = new Bundle();
