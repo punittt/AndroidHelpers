@@ -36,6 +36,7 @@ public class GoogleApiClientHelper
 
     private GoogleApiClient mApiClient;
     private Context mContext;
+    private Location mLastLocation = null;
 
     //private LocationRequest mLocationRequest;
 
@@ -108,8 +109,9 @@ public class GoogleApiClientHelper
                 switch (status.getStatusCode()) {
                     case LocationSettingsStatusCodes.SUCCESS:
 
+                        Log.d("GOOGLE CLIENT APIHELPER", "in success");
                         checkSystemPermission();
-                        Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(mApiClient);
+                        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mApiClient);
                         break;
                     case CommonStatusCodes.RESOLUTION_REQUIRED:
                         try {
@@ -124,6 +126,10 @@ public class GoogleApiClientHelper
                 }
             }
         });
+    }
+
+    public Location getLastLocation(){
+        return mLastLocation;
     }
 
     @Override
